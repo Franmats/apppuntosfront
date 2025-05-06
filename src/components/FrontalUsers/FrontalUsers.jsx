@@ -7,10 +7,10 @@ export const FrontalUsers = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/`, {
+                const response = await fetch(`https://router.sgilibra.com:9443/`, {
                     method: "GET",
                     headers: { "Content-Type": "application/json" },
-                    credentials: "include" // NOT "withCredentials"
+                    credentials: "include" 
                 });
 
                 if (response.ok) {
