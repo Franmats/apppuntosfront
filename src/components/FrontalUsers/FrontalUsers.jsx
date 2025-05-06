@@ -9,8 +9,7 @@ export const FrontalUsers = () => {
             try {
                 const response = await fetch(`https://router.sgilibra.com:9443/`, {
                     method: "GET",
-                    headers: { "Content-Type": "application/json" },
-                    credentials: "include" 
+                    headers: { "Content-Type": "application/json" }
                 });
 
                 if (response.ok) {
