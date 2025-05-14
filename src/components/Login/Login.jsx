@@ -12,7 +12,7 @@ export const Login = () => {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const res = await fetch("http://localhost:8080/auth", {
+                const res = await fetch("https://router.sgilibra.com:9443/auth", {
                     method: "GET",
                     credentials: "include",
                 });
