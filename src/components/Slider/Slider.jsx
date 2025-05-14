@@ -42,8 +42,7 @@ export const Slider = () => {
                 <div className="slider-scroll" ref={scrollRef}>
                     {promos.map((promo, index) => (
                         <div key={index} className="slide">
-                            <img src={promo.imageUrl} alt={promo.title} />
-                            <p>{promo.title}</p>
+                            <img src={promo.image} alt={promo.name} />
                         </div>
                     ))}
                 </div>

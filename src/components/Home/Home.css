@@ -19,16 +19,38 @@
 }
 
 .points-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
   align-items: center;
-  gap: 12px;
   margin-top: 12px;
+    border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 8px;
 }
 
-.points-box {
+.points-container .buttons-front{
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+}
+.points-container .buttons-front .button-1{
+  height: 20px;
   border: 1px solid #ccc;
   padding: 8px 12px;
   border-radius: 8px;
+}
+
+a {
+  text-decoration: none;
+  color:#333;
+}
+a:hover {
+  text-decoration: none;
+  color: #333;
 }
 
 .points-box .label {
@@ -38,7 +60,7 @@
 
 .points-box .points {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 26px;
 }
 
 .link-button {

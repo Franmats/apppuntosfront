@@ -14,12 +14,12 @@ function App() {
     <BrowserRouter>
     
     <Routes>
-      <Route path="/" element={<FrontalUsers/>}/>
+      <Route path="/" element={<h2>Inicie Sesion para acceder</h2>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/update" element={<UpdatePointsForUser/>}/>
       <Route path="/home" element={<Home/>}/>
       <Route path="/profile" element={<HomePage/>}/>
-      <Route path='*' element={<h2>Recurso no encontrado erro 404</h2>}/> 
+      <Route path='*' element={<h2>404</h2>}/> 
     </Routes>
    
    

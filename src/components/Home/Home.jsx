@@ -38,14 +38,17 @@ export const Home = () => {
         <div className="dashboard">
             <header className="header">
                 <h1>LOGO empresa</h1>
-                <p className="welcome">Bienvenido {profile.name}</p>
+                <p className="welcome">Bienvenido!! {profile.name}</p>
                 <div className="points-container">
                     <div className="points-box">
                         <p className="label">Mis Puntos</p>
                         <p className="points">{profile.puntos}</p>
                     </div>
-                    <button className="link-button">Actualizar</button>
-                    <button className="link-button">Movimientos</button>
+                    <div className="buttons-front">
+                           <a className="button-1" href="/home">Actualizar</a>
+                           <a className="button-1" href="/profile">Movimientos</a>
+                    </div>
+                 
                 </div>
             </header>
 
