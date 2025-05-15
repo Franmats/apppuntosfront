@@ -8,12 +8,34 @@ export const Home = () => {
     const [profile, setProfile] = useState(null);
     const navigate = useNavigate();
 
+     const tokenExtractor = () => {
+        try {
+            if (typeof window !== "undefined") {
+                const storedToken = window.localStorage.getItem("accessToken");
+
+                if (storedToken) {
+                    const user = JSON.parse(storedToken);
+                    return user;
+                } else {
+                    return null;
+                }
+            }
+        } catch (error) {
+            return null;
+        }
+    };
     useEffect(() => {
         const fetchProfile = async () => {
+
+
             try {
+                const token = tokenExtractor();
                 const response = await fetch("https://router.sgilibra.com:9443/profile", {
                     method: "GET",
-                    credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`
+                    }
                 });
 
                 if (response.ok) {
