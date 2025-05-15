@@ -6,6 +6,7 @@ import { UpdatePointsForUser } from './components/UpdatePointsForUser/UpdatePoin
 import { Login } from './components/Login/Login';
 import { HomePage } from './components/HomePage/HomePage';
 import { Home } from './components/Home/Home';
+import { Logout } from './components/LogOut/LogOut';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
     
     <Routes>
       <Route path="/" element={<h2>Inicie Sesion para acceder</h2>}/>
+      <Route path="/logout" element={<Logout/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/update" element={<UpdatePointsForUser/>}/>
       <Route path="/home" element={<Home/>}/>

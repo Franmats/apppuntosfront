@@ -102,7 +102,7 @@ export const Home = () => {
             </div>
 
             <div className="bottom-buttons">
-                <button className="close-button">Cerrar Sesión</button>
+                <button className="close-button" ><a href="/logout">Cerrar Sesión</a></button>
                 <button className="settings-button">Configuración</button>
             </div>
         </div>
