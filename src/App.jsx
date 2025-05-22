@@ -15,7 +15,10 @@ function App() {
     <BrowserRouter>
     
     <Routes>
-      <Route path="/" element={<h2>Inicie Sesion para acceder</h2>}/>
+      <Route path="/" element={<div>
+        <h2>Inicie Sesion para acceder</h2>
+        <a href="/login">Iniciar Sesion</a>
+      </div>}/>
       <Route path="/logout" element={<Logout/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/update" element={<UpdatePointsForUser/>}/>
