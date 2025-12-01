@@ -57,6 +57,7 @@ export const HomePage = () => {
             return null;
         }
     };
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -66,7 +67,7 @@ export const HomePage = () => {
                     throw new Error("No token found");
                 }
 
-                const response = await fetch("https://router.sgilibra.com:9443/profile", {
+                const response = await fetch(`${apiUrl}/profile`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -82,7 +83,6 @@ export const HomePage = () => {
                 setProfile(data.payload);
             } catch (error) {
                 setError(error.message);
-                navigate("/login");
             } finally {
                 setIsLoading(false);
             }
@@ -120,13 +120,13 @@ export const HomePage = () => {
             <h2>Perfil del Usuario</h2>
             <div className="profile-item">
                 <h3>{profile.name}</h3>
-                <p>{profile.email}</p>
-                <p>
+                <div>{profile.email}</div>
+                <div>
                     <strong>Puntos Disponibles:</strong>{' '}
                     <span className={profile.puntos >= 0 ? 'positive' : 'negative'}>
                         {profile.puntos.toLocaleString()}
                     </span>
-                </p>
+                </div>
             </div>
 
             <h3>Historial de Movimientos</h3>
@@ -134,16 +134,16 @@ export const HomePage = () => {
                 {profile.pointsHistory && profile.pointsHistory.length > 0 ? (
                     profile.pointsHistory.map((movement, index) => (
                         <div key={index} className="movement-item">
-                            <p>
+                            <div>
                                 <strong>Fecha:</strong>
                                 <span>{movement.date}</span>
-                            </p>
-                            <p>
+                            </div>
+                            <div>
                                 <strong>Puntos:</strong>
                                 <span className={movement.amount > 0 ? 'positive' : 'negative'}>
                                     {movement.amount > 0 ? `+${movement.amount.toLocaleString()}` : movement.amount.toLocaleString()}
                                 </span>
-                            </p>
+                            </div>
                         </div>
                     ))
                 ) : (

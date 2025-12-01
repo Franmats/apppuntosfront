@@ -4,11 +4,11 @@ import "./Slider.css";
 export const Slider = () => {
     const [promos, setPromos] = useState([]);
     const scrollRef = useRef(null);
-
+    const apiUrl = import.meta.env.VITE_API_URL;
     useEffect(() => {
         const fetchPromos = async () => {
             try {
-                const response = await fetch("https://router.sgilibra.com:9443/promos");
+                const response = await fetch(`${apiUrl}/promos`);
                 const data = await response.json();
                 setPromos(data.payload);
             } catch (err) {

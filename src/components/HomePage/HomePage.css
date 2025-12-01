@@ -191,8 +191,7 @@ h3 {
 /* Large devices (desktops) */
 @media (min-width: 1024px) {
     .home-container {
-        padding: 32px;
-        max-width: 1024px;
+        padding: 15px;
     }
 
     .profile-item {

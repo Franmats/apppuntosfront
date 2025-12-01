@@ -10,7 +10,7 @@ export const Login = () => {
 
     const localStorageSetItem = (item) => {
         if (typeof window !== "undefined") {
-            window.localStorage.setItem("accessToken", JSON.stringify(item));
+            window.localStorage.setItem("accessToken", JSON.stringify(item.token));
         }
     };
 
@@ -18,13 +18,7 @@ export const Login = () => {
         try {
             if (typeof window !== "undefined") {
                 const storedToken = window.localStorage.getItem("accessToken");
-
-                if (storedToken) {
-                    const user = JSON.parse(storedToken);
-                    return user;
-                } else {
-                    return null;
-                }
+                return storedToken ? JSON.parse(storedToken) : null;
             }
         } catch (error) {
             return null;
@@ -32,35 +26,18 @@ export const Login = () => {
     };
 
     useEffect(() => {
-        const checkAuth = async () => {
-            try {
-                const token = tokenExtractor();
-
-                if (!token) return;
-
-                const res = await fetch("https://router.sgilibra.com:9443/auth", {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-
-                if (res.ok) {
-                    navigate("/home");
-                }
-            } catch (error) {
-                console.error("No autenticado:", error);
-            }
-        };
-
-        checkAuth();
+        const token = tokenExtractor();
+        if (token) {
+            navigate('/home');
+            return;
+        }
     }, [navigate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setForm((prev) => ({ ...prev, [name]: value }));
     };
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -68,7 +45,7 @@ export const Login = () => {
         setMessage(null);
 
         try {
-            const response = await fetch("https://router.sgilibra.com:9443/login", {
+            const response = await fetch(`${apiUrl}/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -85,10 +62,12 @@ export const Login = () => {
                     navigate("/home");
                 }, 1500);
             } else {
+                localStorage.removeItem("accessToken");
                 setError(result?.status || "Credenciales incorrectas");
             }
         } catch (error) {
             console.error("Error en login:", error);
+            localStorage.removeItem("accessToken");
             setError("Error del servidor. Intente más tarde.");
         }
     };

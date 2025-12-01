@@ -11,12 +11,13 @@ const LoadingSpinner = () => (
         <p>Cargando su información...</p>
     </div>
 );
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Header = ({ profile }) => (
     <header className="header">
         <div className="logo-container">
-            <img src="/logo.png" alt="Logo" />
-            <h1>AppPuntos</h1>
+            <img src="/shopicon.png" alt="Logo" />
+            <h1>Cerutti Deportes</h1>
         </div>
         <p className="welcome">¡Bienvenido, {profile.name}!</p>
         <div className="points-container">
@@ -39,7 +40,7 @@ const Header = ({ profile }) => (
 const QuickActions = () => {
     const actions = [
         { icon: <FaGift />, label: "Regalos", path: "/regalos" },
-        { icon: <FaShoppingCart />, label: "Ofertas", path: "/ofertas" },
+        { icon: <FaShoppingCart />, label: "Ofertas", path: "/products/ofertas" },
         { icon: <FaMapMarkerAlt />, label: "Comercios", path: "/comercios" },
         { icon: <FaQuestionCircle />, label: "Ayuda", path: "/ayuda" }
     ];
@@ -96,7 +97,7 @@ export const Home = () => {
                     throw new Error("No token found");
                 }
 
-                const response = await fetch("https://router.sgilibra.com:9443/profile", {
+                const response = await fetch(`${apiUrl}/profile`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -112,7 +113,6 @@ export const Home = () => {
                 setProfile(data.payload);
             } catch (error) {
                 setError(error.message);
-                navigate("/login");
             } finally {
                 setIsLoading(false);
             }

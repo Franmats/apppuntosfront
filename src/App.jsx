@@ -7,6 +7,8 @@ import { Login } from './components/Login/Login';
 import { HomePage } from './components/HomePage/HomePage';
 import { Home } from './components/Home/Home';
 import { Logout } from './components/LogOut/LogOut';
+import AuthGuard from './components/AuthGuard/AuthGuard';
+import ProductList from './components/ProductList/ProductList';
 
 function App() {
 
@@ -22,8 +24,9 @@ function App() {
       <Route path="/logout" element={<Logout/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/update" element={<UpdatePointsForUser/>}/>
-      <Route path="/home" element={<Home/>}/>
-      <Route path="/profile" element={<HomePage/>}/>
+      <Route path="/home" element={<AuthGuard><Home/></AuthGuard>}/>
+      <Route path="/profile" element={<AuthGuard><HomePage/></AuthGuard>}/>
+      <Route path="/products/:category" element={<ProductList/>}/>
       <Route path='*' element={<h2>404</h2>}/> 
     </Routes>
    
