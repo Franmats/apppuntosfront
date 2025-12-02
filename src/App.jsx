@@ -9,7 +9,7 @@ import { Home } from './components/Home/Home';
 import { Logout } from './components/LogOut/LogOut';
 import AuthGuard from './components/AuthGuard/AuthGuard';
 import ProductList from './components/ProductList/ProductList';
-import Comercios from './components/Comercios/comercios';
+import {Comercios} from './components/Comercios/comercios.jsx';
 
 function App() {
 
