@@ -1,0 +1,26 @@
+.install-app-button {
+
+  
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  display: block;
+  width: fit-content;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.install-app-button:active {
+  transform: scale(0.97);
+}
+
+.install-ios {
+
+  border-radius: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin: 15px;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import { Slider } from "../Slider/Slider";
+import { InstallAppButton } from "../InstallAppButton/InstallAppButton";
 import { FaGift, FaShoppingCart, FaMapMarkerAlt, FaQuestionCircle } from "react-icons/fa";
 import { FiInstagram, FiFacebook, FiTwitter, FiLogOut, FiSettings } from "react-icons/fi";
 
@@ -67,6 +68,7 @@ const QuickActions = () => {
     { icon: <FaShoppingCart />, label: "Canjear", path: "/products/ofertas" },
     { icon: <FaMapMarkerAlt />, label: "Comercios", path: "/comercios" },
     { icon: <FaQuestionCircle />, label: "Ayuda", path: "/ayuda" },
+    { icon: <InstallAppButton />, label: "Instalar App", path: "#" },
   ];
 
   return (
