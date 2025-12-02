@@ -1,0 +1,87 @@
+.comercios-section {
+  margin-top: 12px;
+}
+
+.comercios-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comercio-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.comercio-image-wrapper {
+  width: 80px;
+  min-width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #e5e7eb;
+}
+
+.comercio-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.comercio-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.comercio-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: #111827;
+}
+
+.comercio-address,
+.comercio-hours,
+.comercio-phone {
+  font-size: 0.85rem;
+  color: #4b5563;
+  margin: 2px 0;
+}
+
+.comercio-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.comercio-map-button,
+.comercio-back-button {
+  flex: 1;
+  justify-content: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .comercio-card {
+    background: #1f2933;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  }
+
+  .comercio-name {
+    color: #e5e7eb;
+  }
+
+  .comercio-address,
+  .comercio-hours,
+  .comercio-phone {
+    color: #9ca3af;
+  }
+
+  .comercio-image-wrapper {
+    background: #374151;
+  }
+}
