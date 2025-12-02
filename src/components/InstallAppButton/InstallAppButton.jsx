@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./InstallApp.css";
+import "./Installapp.css";
 
 export const InstallAppButton = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
