@@ -3,13 +3,14 @@ import "./Installapp.css";
 
 export const InstallAppButton = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [hasInstalled, setHasInstalled] = useState(
+    () => window.localStorage.getItem("pwaInstalled") === "true"
+  );
 
   useEffect(() => {
     const handler = (e) => {
       e.preventDefault();
       setDeferredPrompt(e);
-      setIsVisible(true);
     };
 
     window.addEventListener("beforeinstallprompt", handler);
@@ -27,34 +28,41 @@ export const InstallAppButton = () => {
 
     if (choice.outcome === "accepted") {
       console.log("PWA instalada");
+      setHasInstalled(true);
+      window.localStorage.setItem("pwaInstalled", "true");
     } else {
       console.log("Usuario canceló");
     }
 
-    setIsVisible(false);
     setDeferredPrompt(null);
   };
 
   // Para iPhone (Safari)
-  const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+  const isIos = /iphone|ipad|ipod/.test(
+    window.navigator.userAgent.toLowerCase()
+  );
   const isInStandalone = window.navigator.standalone === true;
+
+  // Si ya la instaló, no mostramos más el botón
+  if (hasInstalled) return null;
 
   if (isIos && !isInStandalone) {
     return (
       <div className="install-ios">
-        📱 Para instalar la app:  
+        📱 Para instalar la app:{" "}
         Presioná <strong>Compartir → Agregar a inicio</strong>
       </div>
     );
   }
 
+  // 🔥 El botón se muestra SIEMPRE, pero se desactiva hasta que haya deferredPrompt
   return (
-    <>
-      {isVisible && (
-        <button className="install-app-button" onClick={installApp}>
-          Instalar App
-        </button>
-      )}
-    </>
+    <button
+      className="install-app-button"
+      onClick={installApp}
+      disabled={!deferredPrompt}
+    >
+      Instalar App
+    </button>
   );
 };
