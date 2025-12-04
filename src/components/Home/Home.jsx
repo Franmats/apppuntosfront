@@ -24,7 +24,7 @@ const Header = ({ profile, onRefresh, isRefreshing, showSpinner }) => (
   <header className="header">
     <div className="logo-container">
       <img src="/shopicon.png" alt="Logo" />
-      <h1>Cerutti Deportes</h1>
+      <h1>App Puntos</h1>
     </div>
 
     <p className="welcome">¡Bienvenido, {profile.name}!</p>

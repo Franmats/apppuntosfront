@@ -106,7 +106,7 @@ export const HomePage = () => {
         <div className="logo-container">
           {/* Si tenés logo, descomentá esta línea y ajustá la ruta */}
           {/* <img src="/logo.svg" alt="Logo" /> */}
-          <h1>Cerutti Deportes</h1>
+          <h1>App Puntos</h1>
         </div>
 
         <p className="welcome">Hola, {profile.name}</p>
